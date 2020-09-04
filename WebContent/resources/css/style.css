@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+
+body{
+	background-color: #450c0c;
+	
+}
+.card-header{
+	font-size: 25px;
+    margin-left: 20px;
+    font-weight: bold;
+}
