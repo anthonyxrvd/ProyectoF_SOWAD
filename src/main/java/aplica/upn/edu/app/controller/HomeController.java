@@ -44,9 +44,17 @@ public class HomeController {
 			e.setId(1); e.setNombre("Anthony"); e.setApellido("Castañeda");
 			e.setCargo("programador"); e.setFechaInicio(formatter.parse("02-05-2018"));
 			e.setFechaFin(formatter.parse("02-05-2018"));
-			e.setEstado("Activo");e.setTelefono(123); 
+			e.setEstado("Activo");e.setTelefono(980989181); 
 			e.setImagen("empleado.png");
+			
+			Empleado e2 = new Empleado();
+			e2.setId(2); e2.setNombre("Carlos"); e2.setApellido("Castañeda");
+			e2.setCargo("Administrador"); e2.setFechaInicio(formatter.parse("02-05-2018"));
+			e2.setFechaFin(formatter.parse("02-05-2018"));
+			e2.setEstado("Despedido");e2.setTelefono(942356153); 
+			e2.setImagen("empleado.png");
 			lista.add(e);
+			lista.add(e2);
 			return lista;
 		}
 		catch(Exception e){

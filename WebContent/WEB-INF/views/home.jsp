@@ -57,12 +57,12 @@
 							<td>${dato.apellido}</td>
 							<td>${dato.cargo}</td>
 							<td>${dato.telefono}</td>
-							<td><img alt="" width="60"
-								src="${urlPublic}/images/${dato.imagen}"></td>
 							<td><fmt:formatDate value="${dato.fechaInicio}"
 									pattern="dd-MM-YYY" /></td>
 							<td><fmt:formatDate value="${dato.fechaFin}"
 									pattern="dd-MM-YYY" /></td>
+							<td><img alt="" width="60"
+								src="${urlPublic}/images/${dato.imagen}"></td>
 							<td><c:choose>
 									<c:when test="${dato.estado=='Activo'}">
 										<span class="alert alert-success">Contratado</span>
