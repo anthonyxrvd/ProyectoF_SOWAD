@@ -8,33 +8,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+//import org.springframework.web.servlet.ModelAndView;
 
 import aplica.upn.edu.app.model.Empleado;
 
 @Controller
 public class HomeController {
-	@RequestMapping(value="/home",method=RequestMethod.GET)
-	public ModelAndView irHome() {
-
-		ModelAndView MV= new ModelAndView();
-
-		MV.setViewName("home");
-		return MV;         //Retorna el nombre del archivo jsp de la vista 
-		//Por lo tanto debemos crear un archivo llamado home.jsp
+	
+	
+	@RequestMapping(value="/planilla",method=RequestMethod.GET)
+	public String irHome(Model model) {
+	List<Empleado> empleados=getLista();
+	model.addAttribute("Vempleado",empleados);
+		return "home";
 	}
-
+	
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String mostrarPrincipal(Model model) {
 		List<Empleado> empleados=getLista();
-		//peliculas.add("A");
-		//peliculas.add("B");
-		//peliculas.add("C");
-
 		model.addAttribute("Vempleado",empleados);
 		return "home";
 	}
-
 	private List<Empleado>getLista(){
 		SimpleDateFormat formatter =new SimpleDateFormat("dd-MM-yyyy");
 		List<Empleado> lista =null;
@@ -60,20 +54,29 @@ public class HomeController {
 		catch(Exception e){
 			return null;
 		}
+    }
+	
+	 @RequestMapping(value="/detail",method=RequestMethod.GET)
+	    public String mostrarDetalle(Model model) {
+	    	/*String tituloPelicula = "Anabelle";
+	    	int duracion=136;
+	    	double precio =50;
+	    	model.addAttribute("titulo",tituloPelicula);
+	    	model.addAttribute("duracion",duracion);
+	    	model.addAttribute("precio",precio);*/
+		 List<Empleado> empleados=getLista();
+			//peliculas.add("A");
+			//peliculas.add("B");
+			//peliculas.add("C");
 
-	}
-
-
-	/* @RequestMapping(value="/detalle")
-    public String mostrarDetalle(Model model) {
-    	String tituloPelicula = "Anabelle";
-    	int duracion=136;
-    	double precio =50;
-    	model.addAttribute("titulo",tituloPelicula);
-    	model.addAttribute("duracion",duracion);
-    	model.addAttribute("precio",precio);
-    	return "detalle";
-
-    }*/
+			model.addAttribute("Vempleado",empleados);
+	    	return "detalle";
+	 }
+	 
+	 
+		@RequestMapping(value="/acceso",method=RequestMethod.GET)
+		public String login() {
+			return "login";
+		}
 
 }

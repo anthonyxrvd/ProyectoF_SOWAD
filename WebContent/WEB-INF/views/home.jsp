@@ -77,5 +77,8 @@
 			</table>
 		</div>
 	</div>
+	<a href="detail">abrir detalle</a>
+	<a href="acceso">ir a login</a>
+	
 </body>
 </html>

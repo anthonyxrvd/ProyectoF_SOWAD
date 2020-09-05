@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+
+
+body{
+	
+	background-color: #CADDD6;
+}
+
+.container{
+	
+	background-color:silver;
+	border-radius: 10px;
+	padding: 25px;
+	margin-top: 50px;
+}

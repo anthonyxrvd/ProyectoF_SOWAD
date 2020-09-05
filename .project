@@ -45,4 +45,11 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>WebContent/resources/images/login.png</name>
+			<type>1</type>
+			<location>C:/Users/Anthony/Downloads/images.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>
