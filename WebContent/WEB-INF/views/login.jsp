@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Login</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
@@ -23,23 +24,24 @@
 	crossorigin="anonymous"></script>
 	
 <link rel="stylesheet" href="<c:url value="/resources/css/login.css"/>">
+<spring:url value="/resources" var="urlPublic" />
 </head>
 <body>
 	<div class="container col-lg-3">
-		<form action="planilla">
-		<div class="form-group">
-		<img src="/resources/images/empleado.png" height="80" width="80"/>
-		<p><strong>Login</strong>
+		<form action="planilla" class="form-sign">
+		<div class="form-group text-center">
+		<img height="80" width="80"src="${urlPublic}/images/logo2.png">
+		<p>VERIFICACION DE ACCESO</p>
 		</div>
 		<div class="form-group">
-		<label>Nombre:</label>
+		<label>USUARIO:</label>
 		<input class="form-control" type="text" name="txtnom" placeholder="nombre o id">
 		</div>
 		<div class="form-group">
-		<label>Contrasena</label>
+		<label>CONTRASENA:</label>
 		<input class="form-control" type="password" name="password" placeholder="*******">
 		</div>
-		<input class="btn btn-danger btn-block" type="submit" value="INGRESAR">
+		<input class="btn btn-danger btn-block" type="submit" value="INGRESAR" name="accion">
 		
 		</form>
 

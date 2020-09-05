@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>aea</title>
+<title>Planilla</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
@@ -24,15 +24,8 @@
 <spring:url value="/resources" var="urlPublic" />
 </head>
 <body>
-	<!--  <h1>3ed</h1> -->
-
-	<!--  <h1>LISTA DE PELICULAS</h1>-->
-	<!--<ul> 
-<c:forEach items="${Vpeliculas}" var="dato">
-     <li>${dato}</li>
-  </c:forEach>
-</ul>-->
 	<div class="card">
+
 		<div class="card-header">PLANILLA</div>
 		<div class="card-body">
 			<table class="table table-striped table-bordered table-hover">
@@ -77,8 +70,13 @@
 			</table>
 		</div>
 	</div>
-	<a href="detail">abrir detalle</a>
-	<a href="acceso">ir a login</a>
-	
+	<nav>
+		<div class="opciones">
+			<ul>
+				<li><a href="detail">abrir detalle</a></li>
+				<li><a href="acceso">SALIR</a></li>
+			</ul>
+		</div>
+	</nav>
 </body>
 </html>

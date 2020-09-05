@@ -27,7 +27,7 @@ public class HomeController {
 	public String mostrarPrincipal(Model model) {
 		List<Empleado> empleados=getLista();
 		model.addAttribute("Vempleado",empleados);
-		return "home";
+		return "login";
 	}
 	private List<Empleado>getLista(){
 		SimpleDateFormat formatter =new SimpleDateFormat("dd-MM-yyyy");
@@ -76,6 +76,7 @@ public class HomeController {
 	 
 		@RequestMapping(value="/acceso",method=RequestMethod.GET)
 		public String login() {
+			
 			return "login";
 		}
 
