@@ -1,82 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<!-- FORMATO DE FECHAS -->
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Planilla</title>
+<meta charset="ISO-8859-1">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">
-<!-- script -->
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-	crossorigin="anonymous"></script>
+<title>Principal</title>
 <spring:url value="/resources" var="urlPublic" />
 </head>
 <body>
-	<div class="card">
-
-		<div class="card-header">PLANILLA</div>
-		<div class="card-body">
-			<table class="table table-striped table-bordered table-hover">
-				<thead>
-					<tr>
-						<th scope="col">ID</th>
-						<th scope="col">Nombre</th>
-						<th scope="col">Apellidos</th>
-						<th scope="col">Cargo</th>
-						<th scope="col">Telefono</th>
-						<th scope="col">Fecha Inicio</th>
-						<th scope="col">Fecha Fin</th>
-						<th scope="col">Imagen</th>
-						<th scope="col">Estado</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${Vempleado}" var="dato">
-						<tr>
-							<td>${dato.id}</td>
-							<td>${dato.nombre}</td>
-							<td>${dato.apellido}</td>
-							<td>${dato.cargo}</td>
-							<td>${dato.telefono}</td>
-							<td><fmt:formatDate value="${dato.fechaInicio}"
-									pattern="dd-MM-YYY" /></td>
-							<td><fmt:formatDate value="${dato.fechaFin}"
-									pattern="dd-MM-YYY" /></td>
-							<td><img alt="" width="60"
-								src="${urlPublic}/images/${dato.imagen}"></td>
-							<td><c:choose>
-									<c:when test="${dato.estado=='Activo'}">
-										<span class="alert alert-success">Contratado</span>
-									</c:when>
-									<c:otherwise>
-										<span class="alert alert-danger">Despedido</span>
-									</c:otherwise>
-								</c:choose>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<nav>
-		<div class="opciones">
-			<ul>
-				<li><a href="detail">abrir detalle</a></li>
-				<li><a href="acceso">SALIR</a></li>
-			</ul>
+	<nav class="navbar navbar-dark bg-dark">
+		<a style="color: white" class="navbar-toggler"><span
+			class="navbar-toggler-icon"></span>Home</a>
+		<div class="dropdown">
+			<a style="color: white" href="#" class="nav-link dropdown-toggle"
+				data-toggle="dropdown">Cerrar Sesion</a>
+			<div class="dropdown-menu text-center">
+				<a><img height="60" width="60"src="${urlPublic}/images/login.png"></a><br>
+				<a>Antho</a>
+				<div class="dropdown-divider"></div>
+				<a href="acceso" class="dropdown-item">Salir</a>
+			</div>
 		</div>
 	</nav>
+
+	<div class="opciones">
+		<ul>
+			<li><a href="Huerfanos">abrir lista de niños del albergue</a></li>
+			<li><a href="lista">abrir planilla de trabajadores</a></li>
+			<li><a href="data">Estadisticas</a></li>
+			<li><a href="call">Contactanos</a></li>
+		</ul>
+	</div>
+	<jsp:include page="includes/footer.jsp"></jsp:include>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>
+

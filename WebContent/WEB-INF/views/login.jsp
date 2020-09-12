@@ -28,27 +28,22 @@
 </head>
 <body>
 	<div class="container col-lg-3">
-		<form action="planilla" class="form-sign">
+		<form action="validador" class="form-sign" method="post">
 		<div class="form-group text-center">
 		<img height="80" width="80"src="${urlPublic}/images/logo2.png">
 		<p>VERIFICACION DE ACCESO</p>
 		</div>
 		<div class="form-group">
 		<label>USUARIO:</label>
-		<input class="form-control" type="text" name="txtnom" placeholder="nombre o id">
+		<input class="form-control" type="text" name="usuario" placeholder="nombre o id">
 		</div>
 		<div class="form-group">
 		<label>CONTRASENA:</label>
 		<input class="form-control" type="password" name="password" placeholder="*******">
 		</div>
 		<input class="btn btn-danger btn-block" type="submit" value="INGRESAR" name="accion">
-		
 		</form>
-
 	</div>
-
-
-
 	<!-- <a href="planilla">abrir planilla</a>-->
 
 </body>
