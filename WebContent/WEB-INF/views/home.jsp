@@ -21,7 +21,7 @@
 				data-toggle="dropdown">Cerrar Sesion</a>
 			<div class="dropdown-menu text-center">
 				<a><img height="60" width="60"src="${urlPublic}/images/login.png"></a><br>
-				<a>Antho</a>
+				<a> ${nombre}</a>
 				<div class="dropdown-divider"></div>
 				<a href="acceso" class="dropdown-item">Salir</a>
 			</div>
