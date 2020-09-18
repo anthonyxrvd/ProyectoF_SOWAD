@@ -3,18 +3,78 @@ package aplica.upn.edu.app.controller;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import aplica.upn.edu.app.dao.HuefanoDao;
 import aplica.upn.edu.app.model.Huerfano;
 
 @Controller
 public class HuerfanoController {
 
+	@Autowired
+	HuefanoDao dao;
 	
-	@RequestMapping(value="/Huerfanos",method=RequestMethod.GET)
+	
+	@RequestMapping("/nuevo")
+	public String showform(Model m) {
+		m.addAttribute("command",new Huerfano());
+		return "nuevoHuerfano";
+	}
+	
+	 @RequestMapping(value="/guardar",method = RequestMethod.POST)
+	 public String save(@ModelAttribute("Huerfano") Huerfano huerfano) {
+		 dao.guardar(huerfano);
+		 return "redirect:/Huerfanos";
+	 }
+	
+	 @RequestMapping("/Huerfanos")
+	 public String listado(Model m) {
+		 List<Huerfano> list=dao.listar();
+		 m.addAttribute("list",list);
+		 return "listaH";
+	 }
+	 
+	 @RequestMapping(value="/Huerfanos/{id}")
+	 public String edit(@PathVariable int id,Model m) {
+		 Huerfano h=dao.buscar(id);
+		 m.addAttribute("command",h);
+		 return "editaH";
+	 }
+	 
+	 @RequestMapping(value="/editsave",method = RequestMethod.POST)
+	  public String editsave(@ModelAttribute("h") Huerfano h){
+		 dao.actualizar(h);
+		 return "redirect:/Huerfanos";
+		 
+	 }
+	 
+	 @RequestMapping(value="/eliminar/{id}",method = RequestMethod.GET)    
+	    public String eliminar(@PathVariable("id")int id){    
+	       dao.eliminar(id);
+	        return "redirect:/Huerfanos";   
+}
+	 
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*@RequestMapping(value="/Huerfanos",method=RequestMethod.GET)
 	public String irHuerfanos(Model model) {
 	List<Huerfano> huerfanos=getLista();
 	model.addAttribute("Vhuerfano",huerfanos);
@@ -49,5 +109,5 @@ public class HuerfanoController {
 		catch(Exception e){
 			return null;
 		}
-    }
+    }*/
 }

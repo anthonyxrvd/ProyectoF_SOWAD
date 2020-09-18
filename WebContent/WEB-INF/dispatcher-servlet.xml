@@ -37,6 +37,15 @@ class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<bean id="PersonasDao"
 		class="aplica.upn.edu.app.service.ContraseñaImpl">
 		<property name="dataSource" ref="dataSource" />
+	 </bean>
+	  
+		<bean id="huerfanoDao"
+		class="aplica.upn.edu.app.service.HuerfanoImpl">
+		<property name="template" ref="jdbcTemplate" />
+	</bean>
+	  <bean id="ReportesDao"
+		class="aplica.upn.edu.app.service.ReporteImpl">
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 </beans>	
 	

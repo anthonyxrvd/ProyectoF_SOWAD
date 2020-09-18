@@ -121,11 +121,7 @@ public class HomeController {
 			
 			return "perfil";
 		}
-		@RequestMapping(value="/call",method=RequestMethod.GET)
-		public String contacto() {
-			
-			return "contacto";
-		}
+	
 		
 	
 }

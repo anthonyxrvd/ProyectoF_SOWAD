@@ -1,5 +1,7 @@
 package aplica.upn.edu.app.dao;
 
-public interface ReporteDao {
+import aplica.upn.edu.app.model.Reporte;
 
+public interface ReporteDao {
+	public int insertarReporte(Reporte ReporteDao);
 }
