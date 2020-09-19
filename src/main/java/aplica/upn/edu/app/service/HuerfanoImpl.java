@@ -1,12 +1,17 @@
 package aplica.upn.edu.app.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.web.multipart.MultipartFile;
 
 import aplica.upn.edu.app.dao.HuefanoDao;
 import aplica.upn.edu.app.model.Huerfano;
@@ -34,7 +39,7 @@ public class HuerfanoImpl implements HuefanoDao{
 					h.setGenero(rs.getString(5));
 					h.setFotoReferencial(rs.getString(6));
 					h.setEstado(rs.getString(7));
-					
+					h.setDescripcion(rs.getString(8));
 					return h;
 			 }
 		
@@ -46,7 +51,7 @@ public class HuerfanoImpl implements HuefanoDao{
 	@Override
 	public int guardar(Huerfano h) {
 		// TODO Auto-generated method stub
-		  String sql="insert into huerfano(nombre,Apellido,edad,genero,estado) values('"+h.getNombre()+"','"+h.getApellido()+"',"+h.getEdad()+",'"+h.getGenero()+"','"+h.getEstado()+"')";    
+		  String sql="insert into huerfano(nombre,Apellido,edad,genero,fotoReferencial,estado,descripcion) values('"+h.getNombre()+"','"+h.getApellido()+"',"+h.getEdad()+",'"+h.getGenero()+"','"+h.getFotoReferencial()+"','"+h.getEstado()+"','"+h.getDescripcion()+"')";    
 		    return template.update(sql);
 	}
 
@@ -55,7 +60,7 @@ public class HuerfanoImpl implements HuefanoDao{
 	@Override
 	public int actualizar(Huerfano h) {
 		// TODO Auto-generated method stub
-		String sql="update huerfano set nombre='"+h.getNombre()+"',Apellido='"+h.getApellido()+"',edad="+h.getEdad()+",genero='"+h.getGenero()+"',estado='"+h.getEstado()+"' where id="+h.getId()+"";
+		String sql="update huerfano set nombre='"+h.getNombre()+"',Apellido='"+h.getApellido()+"',edad="+h.getEdad()+",genero='"+h.getGenero()+"',fotoReferencial='"+h.getFotoReferencial()+"',estado='"+h.getEstado()+"',descripcion='"+h.getDescripcion()+"' where id="+h.getId()+"";
 		return template.update(sql);
 	}
 
@@ -76,4 +81,39 @@ public class HuerfanoImpl implements HuefanoDao{
 		String sql="select *from huerfano where id=?";
 		return template.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<Huerfano>(Huerfano.class));
 	}
+	
+	
+	public static String guardarImagen(MultipartFile multiPart, HttpServletRequest request) {
+		// Obtenemos el nombre original del archivo.
+		String nombreOriginal = multiPart.getOriginalFilename();
+		// Reemplazamos en el nombre de archivo los espacios por guiones.
+		nombreOriginal = nombreOriginal.replace(" ", "-");
+		// Agregamos al nombre del archivo 8 caracteres aleatorios para evitar duplicados.
+		String nombreFinal = randomAlphaNumeric(8)+nombreOriginal;
+		// Obtenemos la ruta ABSOLUTA del directorio images.
+		// apache-tomcat/webapps/cineapp/resources/images/
+		String rutaFinal = request.getServletContext().getRealPath("/resources/images/");
+		try {
+			// Formamos el nombre del archivo para guardarlo en el disco duro.
+			File imageFile = new File(rutaFinal + nombreFinal);
+			System.out.println(imageFile.getAbsolutePath());
+			// Aqui se guarda fisicamente el archivo en el disco duro.
+			multiPart.transferTo(imageFile);
+			return nombreFinal;
+		} catch (IOException e) {
+			System.out.println("Error " + e.getMessage());
+			return nombreFinal;
+		}
+	}
+	
+	public static String randomAlphaNumeric(int count) {
+		String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		StringBuilder builder = new StringBuilder();
+		while (count-- != 0) {
+			int character = (int) (Math.random() * CARACTERES.length());
+			builder.append(CARACTERES.charAt(character));
+		}
+		return builder.toString();
+	}
+	
 }

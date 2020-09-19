@@ -59,9 +59,12 @@
 footer {
   background-color: black;
   position: absolute;
-  bottom: 0;
+
   width: 100%;
-  height: 40px;
+  height: 50px;
+  bottom:0;
+  position: fixed;
+  text-alig:center;
   color: white;
 }
 </style>

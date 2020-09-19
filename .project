@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ProyectoF_SOWAD</name>
+	<name>ProyectoF_SOWAD_2</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -45,16 +45,4 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>WebContent/resources/images/niña.jpg</name>
-			<type>1</type>
-			<location>C:/Users/Anthony/Downloads/niña.jpg</location>
-		</link>
-		<link>
-			<name>WebContent/resources/images/niño.png</name>
-			<type>1</type>
-			<location>C:/Users/Anthony/Downloads/niño.png</location>
-		</link>
-	</linkedResources>
 </projectDescription>

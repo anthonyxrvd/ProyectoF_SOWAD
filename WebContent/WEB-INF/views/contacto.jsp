@@ -67,14 +67,18 @@
   </script>
  
 	<jsp:include page="includes/footer.jsp"></jsp:include>
-	
 	<div class="opciones">
-		<ul>
-			<li><a href="detail">abrir detalle</a></li>
-			<li><a href="data">Estadisticas</a></li>
-			<li><a href="Principal">SALIR</a></li>
-
-		</ul>
+	<div class="card-header">Opciones</div>
+		<div class="card-body">
+			<table class="table table-striped table-bordered table-hover ">
+				<thead class="thead-white">
+					<tr>
+						<th scope="row"><li><a href="detail">Abrir detalle</a></li></th>
+						<th scope="row"><li><a href="data">Estadisticas</a></li></th>
+						<th scope="row"><li><a href="Principal">Salir</a></li></th>
+					</tr>
+				</thead>
+				<tbody>
 	</div>
 	  <br>
   <br>

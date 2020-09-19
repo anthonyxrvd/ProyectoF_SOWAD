@@ -3,24 +3,42 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
-
-	<mvc:annotation-driven/>
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	http://www.springframework.org/schema/data/jpa 
+	http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
+		
+		">
+	<mvc:annotation-driven />
+	
 	<context:annotation-config />
-<context:component-scan base-package="aplica.upn.edu.app.controller"/>
-<bean id="viewResolver"
-class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<context:component-scan
+		base-package="aplica.upn.edu.app.controller" />
+		
+		<context:component-scan
+		base-package="aplica.upn.edu.app.service" />
+		<jpa:repositories base-package="aplica.upn.edu.app.repository" />
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
- <property name="prefix">
- <value>/WEB-INF/views/</value>
-  </property>
-   <property name="suffix">
-      <value>.jsp</value>
-   </property>
- </bean>
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
 	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+		
+		
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
@@ -30,22 +48,49 @@ class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
-	<bean id="jdbcTemplate"
+	<!-- BEANS DATA -->
+
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">		
+		 <property name="generateDdl" value="false" />
+		 <property name="showSql" value="true"></property>
+		 <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />		 
+	</bean> 
+
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" >
+		<property name="packagesToScan" value="aplica.upn.edu.app.model" />			
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />						
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>	
+	
+	<!--/BEANS DATA -->
+	
+	
+	  <bean id="jdbcTemplate"
 		class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<bean id="PersonasDao"
 		class="aplica.upn.edu.app.service.ContraseñaImpl">
 		<property name="dataSource" ref="dataSource" />
-	 </bean>
-	  
-		<bean id="huerfanoDao"
+	</bean>
+
+	<bean id="Huerfano"
 		class="aplica.upn.edu.app.service.HuerfanoImpl">
 		<property name="template" ref="jdbcTemplate" />
 	</bean>
-	  <bean id="ReportesDao"
+
+	<bean id="ReportesDao"
 		class="aplica.upn.edu.app.service.ReporteImpl">
 		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="empleadoDao"
+		class="aplica.upn.edu.app.service.EmpleadoImpl">
+		<property name="template" ref="jdbcTemplate" />
 	</bean>
 </beans>	
 	

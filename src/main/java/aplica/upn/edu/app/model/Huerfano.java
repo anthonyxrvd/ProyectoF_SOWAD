@@ -1,11 +1,22 @@
 package aplica.upn.edu.app.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import javax.persistence.Id;
+
+@Entity
+@Table (name="Huerfano")
 public class Huerfano {
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)	
 private int id;
 private String nombre;
 private String Apellido;
 private int edad;
 String genero;
+String descripcion;
 private String fotoReferencial;
 String estado;
 @Override
@@ -15,6 +26,13 @@ public String toString() {
 }
 public int getId() {
 	return id;
+}
+
+public String getDescripcion() {
+	return descripcion;
+}
+public void setDescripcion(String descripcion) {
+	this.descripcion = descripcion;
 }
 public void setId(int id) {
 	this.id = id;

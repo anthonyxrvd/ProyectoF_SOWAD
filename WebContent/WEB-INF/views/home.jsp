@@ -29,12 +29,18 @@
 	</nav>
 
 	<div class="opciones">
-		<ul>
-			<li><a href="Huerfanos">abrir lista de niños del albergue</a></li>
-			<li><a href="lista">abrir planilla de trabajadores</a></li>
-			<li><a href="data">Estadisticas</a></li>
-			<li><a href="call">Contactanos</a></li>
-		</ul>
+	<div class="card-header">Opciones</div>
+		<div class="card-body">
+			<table class="table table-striped table-bordered table-hover ">
+				<thead class="thead-white">
+					<tr>
+						<th scope="row"><li><a href="Huerfanos">Abrir lista de niños del albergue</a></li></th>
+						<th scope="row"><li><a href="Empleados">Abrir planilla de trabajadores</a></li></th>
+						<th scope="row"><li><a href="data">Estadisticas</a></li></th>
+						<th scope="row"><li><a href="call">Contactanos</a></li></th>
+					</tr>
+				</thead>
+				<tbody>
 	</div>
 	<jsp:include page="includes/footer.jsp"></jsp:include>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

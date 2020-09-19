@@ -34,22 +34,15 @@
 
 			<div class="form-group">
 				<label>Apellido:</label> <input class="form-control" type="text"
-					name="Apellido" placeholder="Apellido" required="required">
+					name="Apellido" placeholder="nombre" required="required">
 			</div>
 			<div class="form-group  col-md-4">
 				<label>Edad:</label> <input class="form-control" type="text"
-					name="Edad" placeholder="Edad" required="required">
-			</div>
-		<div class="form-group" class="col-sm-3">
-				<label for="genero" class="control-label">Genero:</label>
-				<form:select path="genero" class="form-control">
-					<form:option value="Masculino">Masculino</form:option>
-					<form:option value="Femenino">Femenino</form:option>
-				</form:select>
+					name="Edad" placeholder="nombre" required="required">
 			</div>
 			<div class="form-group">
-				<label>Descripcion:</label> <input class="form-control" type="text"
-					name="descripcion" placeholder="Descripcion" required="required">
+				<label>Genero:</label> <input class="form-control" type="text"
+					name="Genero" placeholder="nombre" required="required">
 			</div>
 
 				<div class="form-group" class="col-sm-3">

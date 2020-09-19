@@ -21,54 +21,44 @@
 	rel="stylesheet">
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
-	<spring:url value="/guardar" var="urlForm"></spring:url>
-	<h1 class="card-header bg-info">Nuevo Registro :D</h1>
-	<form:form action="${urlForm}" method="POST" enctype="multipart/form-data" >
+<spring:url value="/editsaveE" var="urlForm"></spring:url>
+	<h1 class="card-header bg-info">ModificarDatos</h1>
+	<form:form action="${urlForm}" method="POST">
 		<div class="col-md-6">
 			<div class="form-group card border">
-				<label>Nombre:</label> <input class="form-control" type="text"
-					name="nombre" placeholder="nombre" required="required">
+				 <form:hidden path="id"/>
+			</div>
+			<div class="form-group card border">
+				<label>Nombre:</label> <form:input class="form-control" type="text"
+					path="nombre" placeholder="Nombre" required="required"/>
 			</div>
 
 			<div class="form-group">
-				<label>Apellido:</label> <input class="form-control" type="text"
-					name="Apellido" placeholder="Apellido" required="required">
+				<label>Apellido:</label> <form:input class="form-control" type="text"
+					path="Apellido" placeholder="Apellido" required="required"/>
 			</div>
 			<div class="form-group  col-md-4">
-				<label>Edad:</label> <input class="form-control" type="text"
-					name="Edad" placeholder="Edad" required="required">
-			</div>
-		<div class="form-group" class="col-sm-3">
-				<label for="genero" class="control-label">Genero:</label>
-				<form:select path="genero" class="form-control">
-					<form:option value="Masculino">Masculino</form:option>
-					<form:option value="Femenino">Femenino</form:option>
-				</form:select>
+				<label>Cargo:</label> <form:input class="form-control" type="text"
+					path="cargo" placeholder="Cargo" required="required"/>
 			</div>
 			<div class="form-group">
-				<label>Descripcion:</label> <input class="form-control" type="text"
-					name="descripcion" placeholder="Descripcion" required="required">
+				<label>Telefono:</label> <form:input class="form-control" type="text"
+					path="telefono" placeholder="Telefono" required="required"/>
 			</div>
 
-				<div class="form-group" class="col-sm-3">
-				<label for="estado" class="control-label">Estado:</label>
-				<form:select path="estado" class="form-control">
-					<form:option value="Adoptado">Adoptado</form:option>
-					<form:option value="En albergue">En albergue</form:option>
-					<form:option value="Abandono">Estado de Abandono</form:option>
+			<div class="form-group">
+				<label>Estado:</label> 
+					<form:select path="estado" class="form-control">
+					<form:option value="Contratado">Contratado</form:option>
+					<form:option value="De vacaciones">De Vacaciones</form:option>
+					<form:option value="Despedido">Despedido</form:option>
 				</form:select>
 			</div>
-			<div class="col-sm-3">
 			<div class="form-group">
-				<label for="imagen">Imagen</label> 
-				<input type="file"name="fotoReferencial"/>
-				<p class="help-block">Foto Referencial</p>
-			</div>
-			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-clock">Enviar</button>
+				<button type="submit" class="btn btn-primary btn-clock">Guardar Edicion</button>
 			</div>
 		</div>
 		
@@ -85,17 +75,5 @@
 		src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
 		referrerpolicy="origin"></script>
 		<jsp:include page="includes/footer.jsp"></jsp:include>
-		
-		 <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
 </body>
 </html>

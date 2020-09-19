@@ -19,6 +19,9 @@ hr{
 font-family: 'Pacifico', cursive;
 }
 .contact-form{
+	
+	font-family: 'Dancing Script', cursive;
+font-family: 'Pacifico', cursive;
 	background:rgba(0,0,0,.6);
 	color:white;
 	margin-top:100px;
@@ -27,6 +30,10 @@ font-family: 'Pacifico', cursive;
 }
 .col-md-6 img{
 	margin:auto;
-	margin-top:55px; 
-	display:block
+	
+	display:block;
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
 }
